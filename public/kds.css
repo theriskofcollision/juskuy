@@ -1,0 +1,231 @@
+:root {
+    --primary: #FF5A5F;
+    --primary-gradient: linear-gradient(135deg, #FF6A88 0%, #FF99AC 100%);
+    --dark: #1A202C;
+    --light: #F7FAFC;
+    --white: rgba(255, 255, 255, 0.85);
+    --success: #38A169;
+    --success-gradient: linear-gradient(135deg, #48BB78 0%, #38A169 100%);
+    --glass-border: rgba(255, 255, 255, 0.5);
+    --card-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--dark);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(-45deg, #e0c3fc, #8ec5fc, #fbc2eb, #a18cd1);
+    background-size: 400% 400%;
+    animation: gradientBG 20s ease infinite;
+    overflow: hidden;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.kds-header {
+    background: rgba(26, 32, 44, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    color: white;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    z-index: 10;
+}
+
+.brand {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+.brand span {
+    color: #FF99AC;
+}
+
+.status {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 600;
+    background: rgba(255,255,255,0.1);
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background: #48BB78;
+    border-radius: 50%;
+    margin-right: 12px;
+    box-shadow: 0 0 12px rgba(72, 187, 120, 0.8);
+    animation: pulseDot 2s infinite;
+}
+
+@keyframes pulseDot {
+    0% { box-shadow: 0 0 0 0 rgba(72, 187, 120, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(72, 187, 120, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(72, 187, 120, 0); }
+}
+
+.orders-container {
+    padding: 40px;
+    flex: 1;
+    overflow-x: auto;
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.orders-container::-webkit-scrollbar {
+    height: 12px;
+}
+.orders-container::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.5);
+    border-radius: 10px;
+}
+
+.order-card {
+    background: var(--white);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    min-width: 340px;
+    max-width: 340px;
+    box-shadow: var(--card-shadow);
+    display: flex;
+    flex-direction: column;
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    overflow: hidden;
+    transform-origin: top center;
+}
+
+@keyframes popIn {
+    0% { opacity: 0; transform: scale(0.9) translateY(30px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.order-header {
+    background: var(--primary-gradient);
+    color: white;
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.order-id {
+    font-size: 1.4rem;
+    font-weight: 800;
+    font-family: 'Outfit', sans-serif;
+}
+
+.order-timer {
+    font-size: 1rem;
+    font-weight: 700;
+    background: rgba(0,0,0,0.2);
+    padding: 4px 10px;
+    border-radius: 12px;
+}
+
+.order-body {
+    padding: 24px;
+    flex: 1;
+}
+
+.recipe-title {
+    font-weight: 800;
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px dashed rgba(0,0,0,0.1);
+    color: #2D3748;
+}
+
+.ingredient-list {
+    list-style: none;
+}
+
+.ingredient-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: #4A5568;
+}
+
+.ingredient-list li:last-child {
+    border-bottom: none;
+}
+
+.order-footer {
+    padding: 20px 24px;
+    background: rgba(255,255,255,0.5);
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.btn-complete {
+    width: 100%;
+    background: var(--success-gradient);
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    box-shadow: 0 4px 15px rgba(72, 187, 120, 0.3);
+}
+
+.btn-complete:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(72, 187, 120, 0.4);
+}
+
+.btn-complete:active {
+    transform: scale(0.96);
+}
+
+.empty-state {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    color: rgba(255,255,255,0.8);
+    font-weight: 700;
+    font-family: 'Outfit', sans-serif;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+.empty-state span {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    animation: float 4s ease-in-out infinite;
+}
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
